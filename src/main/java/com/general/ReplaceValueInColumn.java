@@ -1,4 +1,4 @@
-package org.example;
+package com.general;
 
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
@@ -9,23 +9,27 @@ import java.util.Scanner;
 import static org.apache.spark.sql.functions.*;
 
 /**
+ *
+ * Program Requirement
  * Input :
  *
- * 	Name|address
- * 	Sandeep|Pune
- * 	Saurabh|Mumbai
- * 	Nitu|Delhi
- * 	Nikhr|Pune
- * 	Maya|Indore
+ Name|address
+ Sandeep|Pune
+ Saurabh|Mumbai
+ Nitu|Delhi
+ Nikhr|Pune123
+ Maya|Indore
+
  *
  * Output (Replace Pune to Nagpur)
  *
- * Name|address
- * Sandeep|Nagpur
- * Saurabh|Mumbai
- * Nitu|Delhi
- * Nikhr|Nagour
- * Maya|Indore
+ Name|address
+ Sandeep|Nagpur
+ Saurabh|Mumbai
+ Nitu|Delhi
+ Nikhr|Nagpur123
+ Maya|Indore
+
  *
  */
 public class ReplaceValueInColumn {
@@ -44,11 +48,11 @@ public class ReplaceValueInColumn {
 							.option("inferschema",true)
 							.option("sep","|")
 							.load("src/main/resources/SampleData.csv");
-		
-		df.show(10);
-		df.printSchema();
 
-		// Replace address form Pune to Nagpur
+		df.printSchema();
+		df.show(10);
+
+		// Replace address value  form Pune to Nagpur
 		df=df.withColumn("city_updated",
 							regexp_replace(col("address"),
 									lit("Pune"),
