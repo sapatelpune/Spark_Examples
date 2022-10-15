@@ -4,7 +4,7 @@ import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SparkSession;
 
-public class LeftSemiTest {
+public class LeftAntiExample {
 
     public static void main(String[] args) {
         SparkSession session= SparkSession.builder().master("local[2]").getOrCreate();
@@ -24,11 +24,11 @@ public class LeftSemiTest {
                 .option("sep","|")
                 .load("src/main/resources/empdata/salary.csv");
 
-        System.out.println("======Emp Sal Left Semi Join=======");
-        // LeftSemi
+        System.out.println("======Emp Sal Left Anti Join=======");
+        // LeftAnti
         Dataset<Row> empSalDF=emp.join(sal,
                                 emp.col("id").equalTo(sal.col("id"))
-                                ,"left_Semi");
+                                ,"left_Anti");
         empSalDF.show();
 
     }
