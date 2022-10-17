@@ -15,14 +15,14 @@ public class LeftAntiExample {
                 .option("inferSchema",true)
                 .option("header",true)
                 .option("sep","|")
-                .load("src/main/resources/empdata/emp.csv");
+                .load("src/main/resources/empdata/empDummy.csv");
 
         // Loading Sal Data
         Dataset<Row> sal= session.read().format("csv")
                 .option("inferSchema",true)
                 .option("header",true)
                 .option("sep","|")
-                .load("src/main/resources/empdata/salary.csv");
+                .load("src/main/resources/empdata/salaryDummy.csv");
 
         System.out.println("======Emp Sal Left Anti Join=======");
         // LeftAnti
