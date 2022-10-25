@@ -50,10 +50,10 @@ public class ReadMultiDelimiterCSV {
 		df=df.withColumn("updatedValue",regexp_replace(col("value"),
 												lit("~"),
 												lit("")));
-		System.out.println("====Showing the Data after replaceing the first delimeter with blank");
+		System.out.println("====Showing the Data after replacing the first delimiter with blank");
 		df.show();
 
-		// Split the data based on the second delimeter into 2 columns
+		// Split the data based on the second delimiter into 2 columns
 		//		Name;address
 		//		Sandeep;Pune
 
